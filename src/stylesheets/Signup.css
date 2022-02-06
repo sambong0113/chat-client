@@ -1,0 +1,55 @@
+html,
+body,
+#root,
+main {
+  height: 100%;
+}
+
+.Main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.Main > div {
+  border: 1px solid black;
+  height: 90%;
+  width: 30%;
+  border-radius: 30px;
+}
+
+.Logo {
+  text-align: center;
+}
+.Logo > a {
+  text-decoration: none;
+  color: black;
+}
+
+.InnerBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.InputBlock {
+  width: 100%;
+}
+
+.CustomInput {
+  width: 100%;
+  height: 25px;
+}
+
+.ButtonWrapper {
+  width: 100%;
+  margin-top: 25px;
+}
+
+.ButtonWrapper > button {
+  height: 34px;
+  width: 100%;
+}
