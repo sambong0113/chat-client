@@ -31,3 +31,16 @@ export const refreshToken = async () => {
 
   return newToken;
 };
+
+export const getUser = async () => {
+  const token = localStorage.getItem('token');
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+
+  const { data } = await axios 
+    .get(`${SERVER_URL}/api/v1/users`)
+    .catch(err => {
+      throw new Error(err.response);
+    });
+
+  return data.body.user;
+}
