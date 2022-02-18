@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { Avatar } from '@material-ui/core';
 
 const UserProfile = ({ user }) => {
 
@@ -24,11 +25,6 @@ const UserProfile = ({ user }) => {
       height: '100%',
       justifyContent: 'space-evenly'
     },
-    imagePicture: {
-      width: '70px',
-      height: '70px',
-      borderRadius: '50%'
-    },
   }));
   const classes = useStyles();
 
@@ -37,7 +33,8 @@ const UserProfile = ({ user }) => {
   return (
     <div className={classes.root}>
       <div className={classes.imagePane}>
-        <img className={classes.imagePicture} src={picture} alt={"user profile picure"} />
+        <Avatar sx={{ height: '170px', width: '170px' }} alt="user profile picure" src={picture} />
+
       </div>
       <div className={classes.infoPane}>
         <div>{name}</div>

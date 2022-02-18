@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const FriendsList = ({ friends }) => {
-  const classes = useStyles();
+const classes = useStyles();
 
   return (
     <div className={classes.root}>
@@ -42,10 +42,10 @@ const FriendsList = ({ friends }) => {
       <div className={classes.list}>
         <List>
           {friends.map((friend, index) => (
-            <>
-              <FriendListCell key={index} friend={friend} />
+            <div key={friend.userId} >
+              <FriendListCell friend={friend} />
               { index === friends.size - 1 || <Divider variant="fullWidth" component="li" />}
-            </>
+            </div>
           ))}
         </List>
       </div>

@@ -29,7 +29,7 @@ const FriendListCell = ({ friend }) => {
   return (
     <ListItem className={classes.root} alignItems="flex-start" dense>
       <ListItemAvatar>
-        <Avatar alt="Remy sharp" imgProps={picture} />
+        <Avatar alt="Remy sharp" src={picture} />
       </ListItemAvatar>
       <ListItemText
         primary={
