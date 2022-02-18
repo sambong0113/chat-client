@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const FriendList = () => {
+const FriendsList = ({ friends }) => {
   const classes = useStyles();
 
   return (
@@ -41,10 +41,10 @@ const FriendList = () => {
       <Divider />
       <div className={classes.list}>
         <List>
-          {[...Array(10)].map((x, i) => (
+          {friends.map((friend, index) => (
             <>
-              <FriendListCell key={x} value={i} />
-              {i === 9 || <Divider variant="fullWidth" component="li" />}
+              <FriendListCell key={index} friend={friend} />
+              { index === friends.size - 1 || <Divider variant="fullWidth" component="li" />}
             </>
           ))}
         </List>
@@ -53,4 +53,4 @@ const FriendList = () => {
   );
 };
 
-export default FriendList;
+export default FriendsList;

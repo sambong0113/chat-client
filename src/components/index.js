@@ -1,5 +1,5 @@
 import UserProfile from './UserProfile';
-import FriendList from './FriendList';
+import FriendsList from './FriendsList';
 import ChatList from './ChatList';
 
-export { UserProfile, FriendList, ChatList };
+export { UserProfile, FriendsList, ChatList };

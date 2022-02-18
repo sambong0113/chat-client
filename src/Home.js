@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { UserProfile } from './components';
-import { getUser } from './api';
+import { UserProfile, FriendsList } from './components';
+import { getUser, getFriends } from './api';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -42,9 +42,11 @@ const useStyles = makeStyles(theme => ({
 const Home = () => {
   const classes = useStyles();
   const [user, setUser] = useState({});
+  const [friends, setFriends] = useState([]);
 
   useEffect(() => {
     (async () => { setUser(await getUser()) })();
+    (async () => { setFriends(await getFriends()) })();
   }, []);
 
   return <div className={classes.root}>
@@ -52,6 +54,9 @@ const Home = () => {
       <div className={classes.friendsList}>
         <div className={classes.userProfile}>
           <UserProfile user={user} />
+        </div>
+        <div>
+          <FriendsList friends={friends} />
         </div>
       </div>
       <div className={classes.chatsList}>ChatsList</div>

@@ -12,7 +12,6 @@ import {
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
-    maxWidth: '36ch',
     backgroundColor: theme.palette.background.paper,
     height: '70px',
   },
@@ -21,30 +20,31 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const FriendListCell = props => {
-  const { value } = props;
+const FriendListCell = ({ friend }) => {
   const classes = useStyles();
+
+  const { name, picture, email } = friend;
+
 
   return (
     <ListItem className={classes.root} alignItems="flex-start" dense>
       <ListItemAvatar>
-        <Avatar alt="Remy sharp" />
+        <Avatar alt="Remy sharp" imgProps={picture} />
       </ListItemAvatar>
       <ListItemText
-        primary="Brunch this weekend?"
-        secondary={
+        primary={
           <>
             <Typography
               component="span"
-              variant="body2"
+              variant="body1"
               className={classes.inline}
               color="textPrimary"
             >
-              {value}
+              {name}
             </Typography>
-            {" — I'll be in your neighborhood doing errands this…"}
           </>
         }
+        secondary={email}
       />
     </ListItem>
   );

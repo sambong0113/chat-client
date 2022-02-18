@@ -44,3 +44,16 @@ export const getUser = async () => {
 
   return data.body.user;
 }
+
+export const getFriends = async () => {
+  const token = localStorage.getItem('token');
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+
+  const { data } = await axios 
+    .get(`${SERVER_URL}/api/v1/friends`)
+    .catch(err => {
+      throw new Error(err.response);
+    });
+
+  return data.friendSet;
+}
