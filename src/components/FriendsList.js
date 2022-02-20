@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { List, Divider, Button, Typography } from '@material-ui/core';
 import { Add } from '@material-ui/icons';
 import { FriendListCell } from '../units';
+import FriendsAppendModal from './FriendsAppendModal';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -23,7 +24,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const FriendsList = ({ friends }) => {
-const classes = useStyles();
+  const classes = useStyles();
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
 
   return (
     <div className={classes.root}>
@@ -34,6 +40,7 @@ const classes = useStyles();
           variant="contained"
           aria-label="add"
           startIcon={<Add />}
+          onClick={handleOpen}
         >
           친구 추가
         </Button>
@@ -48,6 +55,7 @@ const classes = useStyles();
             </div>
           ))}
         </List>
+        <FriendsAppendModal open={open} handleClose={handleClose} />
       </div>
     </div>
   );

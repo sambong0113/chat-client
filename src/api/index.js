@@ -55,5 +55,20 @@ export const getFriends = async () => {
       throw new Error(err.response);
     });
 
-  return data.friendSet;
+  return data.body.friends.friendSet;
+}
+
+export const searchUsers = async email => {
+  const token = localStorage.getItem('token');
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+
+  if (email === '') return [];
+
+  const { data } = await axios 
+    .get(`${SERVER_URL}/api/v1/users/search?email=${email}`)
+    .catch(err => {
+      throw new Error(err.response);
+    });
+
+  return data.body.userList.userInfoDtoList;
 }
