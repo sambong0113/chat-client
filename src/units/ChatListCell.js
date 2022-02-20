@@ -1,13 +1,13 @@
 /* eslint-disable react/jsx-wrap-multilines */
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 import {
   ListItem,
   ListItemAvatar,
   Avatar,
   Typography,
   ListItemText,
-} from '@material-ui/core';
+} from '@mui/material';
 
 const useStyles = makeStyles(theme => ({
   item: {

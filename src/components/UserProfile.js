@@ -1,6 +1,6 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Avatar } from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
+import { Avatar } from '@mui/material';
 
 const UserProfile = ({ user }) => {
 
@@ -33,7 +33,7 @@ const UserProfile = ({ user }) => {
   return (
     <div className={classes.root}>
       <div className={classes.imagePane}>
-        <Avatar sx={{ height: '170px', width: '170px' }} alt="user profile picure" src={picture} />
+        <Avatar sx={{ height: 40, width: 40 }} alt="user profile picure" src={picture} />
 
       </div>
       <div className={classes.infoPane}>

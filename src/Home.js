@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 import { UserProfile, FriendsList } from './components';
 import { getUser, getFriends } from './api';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: 'paper',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { List, Divider, Button, Typography } from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
+import { List, Divider, Button, Typography } from '@mui/material';
 import { Add } from '@material-ui/icons';
 import { FriendListCell } from '../units';
 import FriendsAppendModal from './FriendsAppendModal';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: 'paper',
     height: '100%',
   },
   list: {

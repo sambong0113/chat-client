@@ -1,6 +1,6 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { List, Divider, Typography } from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
+import { List, Divider, Typography } from '@mui/material';
 import { ChatListCell } from '../units';
 
 const useStyles = makeStyles(theme => ({

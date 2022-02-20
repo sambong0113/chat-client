@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 import { Typography,
     Modal,
     Box,
     Divider,
     TextField,
     ListItem,
+    ListItemButton,
     ListItemAvatar,
     Avatar,
     ListItemText
-} from '@material-ui/core';
+} from '@mui/material';
 import { searchUsers } from '../api';
 
 const useStyles = makeStyles(theme => ({
@@ -44,8 +45,11 @@ const useStyles = makeStyles(theme => ({
         border: '0.5px solid #ededed',
         flexBasis: '45%',
         height: '80px',
-        marginBottom: '10px'
-    }
+        marginBottom: '10px',
+        "&:hover, &:focus": {
+            backgroundColor: '#d1d1d1'
+        }
+    },
 }));
 
 const FriendsAppendModal = ({ handleClose, open}) => {
@@ -85,12 +89,14 @@ const FriendsAppendModal = ({ handleClose, open}) => {
                     {
                         resultUsers.map(({ name, picture, email, userSeq }) => (
                             <ListItem className={classes.resultBox} key={userSeq}>
-                                <ListItemAvatar>
-                                    <Avatar alt="Remy sharp" src={picture} />
-                                </ListItemAvatar>
-                                <ListItemText primary={name} secondary={email}>
-                                    {name}
-                                </ListItemText>
+                                <ListItemButton>
+                                    <ListItemAvatar>
+                                        <Avatar alt="Remy sharp" src={picture} />
+                                    </ListItemAvatar>
+                                    <ListItemText primary={name} secondary={email}>
+                                        {name}
+                                    </ListItemText>
+                                </ListItemButton>
                             </ListItem>
                         ))
                     }
