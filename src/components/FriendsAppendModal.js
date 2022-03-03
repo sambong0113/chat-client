@@ -11,7 +11,7 @@ import { Typography,
     Avatar,
     ListItemText
 } from '@mui/material';
-import { searchUsers } from '../api';
+import { searchUsers, addFriend } from '../api';
 
 const useStyles = makeStyles(theme => ({
     box: {
@@ -63,6 +63,10 @@ const FriendsAppendModal = ({ handleClose, open}) => {
       (async () => { setResultUsers(await searchUsers(emailQuery)) })();
   }
 
+  const handleFriendsClick = userSeq => {
+    addFriend(userSeq);
+  }
+
   return (
     <div className={classes.root}>
         <Modal
@@ -89,7 +93,7 @@ const FriendsAppendModal = ({ handleClose, open}) => {
                     {
                         resultUsers.map(({ name, picture, email, userSeq }) => (
                             <ListItem className={classes.resultBox} key={userSeq}>
-                                <ListItemButton>
+                                <ListItemButton onClick={() => handleFriendsClick(userSeq)}>
                                     <ListItemAvatar>
                                         <Avatar alt="Remy sharp" src={picture} />
                                     </ListItemAvatar>

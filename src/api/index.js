@@ -72,3 +72,16 @@ export const searchUsers = async email => {
 
   return data.body.userList.userInfoDtoList;
 }
+
+export const addFriend = async userSeq => {
+  const token = localStorage.getItem('token');
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+
+  const { data } = await axios 
+    .put(`${SERVER_URL}/api/v1/friends`, {'friendId': userSeq})
+    .catch(err => {
+      throw new Error(err.response);
+    });
+
+  return data;
+}
