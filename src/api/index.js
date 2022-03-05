@@ -2,11 +2,9 @@ import axios from 'axios';
 import { SERVER_URL } from '../constants';
 
 export const login = async () => {
-  const data = await axios
+  await axios
     .get(`${SERVER_URL}/oauth2/authorization/google`)
     .catch(err => err.response);
-
-  console.log(data);
 };
 
 export const signup = async body => {
@@ -27,7 +25,6 @@ export const refreshToken = async () => {
     .catch(err => {
       throw new Error(err.response);
     });
-  console.log(newToken);
 
   return newToken;
 };
@@ -42,7 +39,7 @@ export const getUser = async () => {
       throw new Error(err.response);
     });
 
-  return data.body.user;
+  return data;
 }
 
 export const getFriends = async () => {
@@ -55,7 +52,7 @@ export const getFriends = async () => {
       throw new Error(err.response);
     });
 
-  return data.body.friends.friendSet;
+  return data;
 }
 
 export const searchUsers = async email => {
@@ -70,7 +67,7 @@ export const searchUsers = async email => {
       throw new Error(err.response);
     });
 
-  return data.body.userList.userInfoDtoList;
+  return data;
 }
 
 export const addFriend = async userSeq => {
