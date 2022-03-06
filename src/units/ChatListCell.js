@@ -11,25 +11,25 @@ import {
 
 const useStyles = makeStyles(theme => ({
   item: {
-    width: '100%',
-    maxWidth: '120ch',
-    backgroundColor: theme.palette.background.paper,
-    height: '90px',
   },
   itemAvatar: {
-    minWidth: '80px',
   },
   inline: {
-    display: 'inline',
+    display: 'inline'
   },
-  large: {
-    width: theme.spacing(8),
-    height: theme.spacing(8),
-  },
+  date: {
+    width: '100%',
+    textAlign: 'right'
+  }
 }));
 
-const ChatListCell = () => {
+const ChatListCell = ({ chatRoom }) => {
   const classes = useStyles();
+  const { title, modifiedDate, userList } = chatRoom;
+
+  const date = new Date(modifiedDate);
+
+  
 
   return (
     <ListItem alignItems="center" className={classes.item}>
@@ -37,7 +37,7 @@ const ChatListCell = () => {
         <Avatar alt="Remy sharp" className={classes.large} />
       </ListItemAvatar>
       <ListItemText
-        primary="유저명"
+        primary={title}
         secondary={
           <>
             <Typography
@@ -46,9 +46,14 @@ const ChatListCell = () => {
               className={classes.inline}
               color="textPrimary"
             />
-            가장 최근 대화
+            {userList.map(user => user.name).join(", ")}
           </>
         }
+      />
+      <ListItemText
+        secondary={<div className={classes.date}>
+          {date.toLocaleDateString()}
+        </div>}
       />
     </ListItem>
   );

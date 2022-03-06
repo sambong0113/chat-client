@@ -9,6 +9,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: 'paper',
     height: '100%',
+    width: '100%'
   },
   list: {
     overflow: 'auto',
@@ -47,14 +48,13 @@ const FriendsList = ({ friends }) => {
       </div>
       <Divider />
       <div className={classes.list}>
-        <List>
-          {friends.map((friend, index) => (
+        
+      {friends.map((friend, index) => (
             <div key={friend.userId} >
               <FriendListCell friend={friend} />
-              { index === friends.size - 1 || <Divider variant="fullWidth" component="li" />}
+              { index === friends.size - 1 || <Divider variant="fullWidth" />}
             </div>
           ))}
-        </List>
         <FriendsAppendModal open={open} handleClose={handleClose} />
       </div>
     </div>

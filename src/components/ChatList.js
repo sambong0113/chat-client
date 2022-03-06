@@ -5,23 +5,26 @@ import { ChatListCell } from '../units';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    backgroundColor: theme.palette.background.paper,
+    width: '100%',
     height: '100%',
-  },
-  list: {
-    overflow: 'auto',
-    height: 'calc(100% - 51px)',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start'
+    
   },
   header: {
-    margin: '0 10px',
-    height: '50px',
+    position: 'sticky',
     display: 'flex',
-    justifyContent: 'space-between',
     alignItems: 'center',
+    paddingLeft: '10px',
+    height: '50px'
+  },
+  list: {
+    height: '100%',
   },
 }));
 
-const ChatList = () => {
+const ChatList = ({ chatRooms }) => {
   const classes = useStyles();
 
   return (
@@ -31,14 +34,13 @@ const ChatList = () => {
       </div>
       <Divider />
       <div className={classes.list}>
-        <List>
-          {[...Array(10)].map((x, i) => (
-            <>
-              <ChatListCell key={x} value={i} />
-              <Divider variant="fullWidth" component="li" />
-            </>
-          ))}
-        </List>
+        { chatRooms.map((chatRoom, index) => (
+            <div key={chatRoom.id} >
+              <ChatListCell chatRoom={chatRoom} />
+              { index === chatRooms.size - 1 || <Divider variant="fullWidth" />}
+            </div>
+          ))
+        }
       </div>
     </div>
   );

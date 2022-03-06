@@ -32,6 +32,8 @@ export const refreshToken = async () => {
 export const getUser = async () => {
   const token = localStorage.getItem('token');
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  
+  console.log(token);
 
   const { data } = await axios 
     .get(`${SERVER_URL}/api/v1/users`)
@@ -76,6 +78,19 @@ export const addFriend = async userSeq => {
 
   const { data } = await axios 
     .put(`${SERVER_URL}/api/v1/friends`, {'friendId': userSeq})
+    .catch(err => {
+      throw new Error(err.response);
+    });
+
+  return data;
+}
+
+export const listChatRooms = async () => {
+  const token = localStorage.getItem('token');
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+
+  const { data } = await axios 
+    .get(`${SERVER_URL}/api/v1/chats`)
     .catch(err => {
       throw new Error(err.response);
     });
